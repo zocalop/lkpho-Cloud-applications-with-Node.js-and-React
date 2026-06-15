@@ -8,7 +8,19 @@ const today = require('./today');
 const requestListener = function (req, res) {
     res.writeHead(200); // Set the status code to 200 (OK)
     // Send the response with the current date from the 'today' module
-    res.end(`Hello, World! The date today is ${today.getDate()}`);
+    //res.end(`Hello, World! The date today is ${today.getDate()}`);
+    let dateVal = today.getDate();  //get the current date from the 'today' module
+    let greeting = "Hello!";
+    if (dateVal.getHours() > 6 && dateVal.getHours() < 12) {
+      greeting = "Good morning!";
+    } else if (dateVal.getHours() >= 12 && dateVal.getHours() < 18) {
+      greeting = "Good afternoon";
+    } else if (dateVal.getHours() >= 18 && dateVal.getHours < 21) {
+      greeting = "Good evening!";
+    } else if (dateVal.getHours() >= 21 && dateVal.getHours() < 24) {
+      greeting ="Good night!";
+    }
+    res.end(`Hello, ${greeting}`);
 };
 
 // Define the port number
