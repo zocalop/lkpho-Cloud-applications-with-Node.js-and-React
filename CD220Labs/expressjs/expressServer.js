@@ -4,8 +4,24 @@ const express = require('express');
 // Create an instance of an Express application
 const app = new express();
 
+// Month array for fetchMonth request
+const months = [
+  "January", "February", "March", "April", "May", "June", "July", "August",
+  "September", "October", "November", "December"
+];
+
 // Initialize an array to store login details
 let loginDetails = [];
+
+// Define a route to send the specified month/s
+app.get("/fetchMonth/:num", (req, res) => {
+  let num = parseInt(req.params.num);
+  if (num < 1 || num > 12) {
+    res.send("Not a valid month number.");
+  } else {
+    res.send(months[num - 1]);
+  }
+});
 
 // Define the root route to send a welcome message
 app.get("/", (req, res) => {
