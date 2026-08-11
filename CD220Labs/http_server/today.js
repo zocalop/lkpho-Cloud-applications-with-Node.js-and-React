@@ -1,7 +1,9 @@
  // Export a function named 'getDate' from the module
 module.exports.getDate = function getDate() {
     // Get the current date and time in the timezone "Australia/Brisbane"
-    let aestTime = new Date().toLocaleString("en-US", {timeZone: "Australia/Brisbane"});
-    let aestDate = new Date(aestTime);
-    return aestDate; // Return the formatted date and time
+    //let aestTime =
+    //making the following a return will cause error in .getHours() in index-with-require.js
+    return new Date().toLocaleString("en-US", {timeZone: "Australia/Brisbane"});
+    //let aestDate = new Date(aestTime);
+    //return aestDate; // Return the formatted date and time
 };
